@@ -1,5 +1,4 @@
 
-
 * {
   box-sizing: border-box;
 }
@@ -80,7 +79,6 @@ body {
 
 .screen-content p {
   color: #684d75;
-  font-size: 15px;
 }
 
 .screen-content button {
@@ -94,18 +92,15 @@ body {
   color: #552d6d;
   font-size: 15px;
   cursor: pointer;
-  transition: 0.2s;
 }
 
 .screen-content button:hover {
   background: #b98bd5;
-  transform: scale(1.04);
 }
 
 .computer-logo {
   margin-top: 15px;
   color: #80618d;
-  font-size: 13px;
 }
 
 .computer-stand {
@@ -119,8 +114,17 @@ body {
   width: 240px;
   height: 24px;
   background: #cbb9d3;
-  border-radius: 12px;
   border: 4px solid #a894b5;
+  border-radius: 12px;
+}
+
+.page-area {
+  padding: 30px 15px;
+  min-height: 70vh;
+}
+
+.back-button {
+  margin-bottom: 20px;
 }
 
 footer {
@@ -135,10 +139,6 @@ footer {
 
   .top-bar h1 {
     font-size: 22px;
-  }
-
-  .top-bar span {
-    font-size: 12px;
   }
 
   .computer-area {
