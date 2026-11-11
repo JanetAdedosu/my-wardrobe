@@ -1,0 +1,55 @@
+
+.wardrobe-section {
+  text-align: center;
+  padding: 20px;
+  color: #683b80;
+}
+
+.wardrobe-section h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.wardrobe-display {
+  width: 100%;
+  max-width: 450px;
+  margin: 20px auto;
+}
+
+.wardrobe-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  animation: wardrobeAppear 0.35s ease;
+}
+
+.wardrobe-button {
+  background: #b68bd1;
+  color: white;
+  border: 2px solid #80549c;
+  border-radius: 12px;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.wardrobe-button:hover {
+  background: #9669b5;
+}
+
+.wardrobe-message {
+  margin-top: 15px;
+  font-style: italic;
+}
+
+@keyframes wardrobeAppear {
+  from {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

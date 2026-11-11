@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 //where we begin our showroom
-
+import Wardrobe from "./components/Wardrobe";
 
 function App() {
   const [page, setPage] = useState("home");
@@ -36,15 +36,17 @@ function App() {
               </div>
             )}
 
-            {page === "closet" && (
-              <div className="screen-content">
-                <h2>My Closet ♡</h2>
-                <p>Your wardrobe is waiting!</p>
-                <button onClick={() => setPage("home")}>
+            
+                 {page === "closet" && (
+                  <div className="screen-content">
+                    <Wardrobe />
+
+                    <button onClick={() => setPage("home")}>
                   ← Back Home
-                </button>
-              </div>
-            )}
+                 </button>
+                </div>
+              )}
+
 
             {page === "generator" && (
               <div className="screen-content">
