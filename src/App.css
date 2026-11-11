@@ -1,10 +1,18 @@
+
+
 * {
   box-sizing: border-box;
 }
 
-body {
+html,
+body,
+#root {
   margin: 0;
-  font-family: Georgia, serif;
+  min-height: 100%;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
 }
 
 button {
@@ -13,255 +21,287 @@ button {
 
 .app {
   min-height: 100vh;
-  background-color: #eadcf2;
+  color: #57286d;
+  background-color: #f0dff5;
   background-image:
     repeating-linear-gradient(
       0deg,
-      transparent 0px,
-      transparent 23px,
-      rgba(128, 77, 153, 0.17) 24px,
-      transparent 25px
+      transparent 0 8px,
+      rgba(143, 80, 170, 0.13) 9px 12px,
+      transparent 13px 24px
     ),
     repeating-linear-gradient(
       90deg,
-      transparent 0px,
-      transparent 23px,
-      rgba(128, 77, 153, 0.17) 24px,
-      transparent 25px
+      transparent 0 8px,
+      rgba(143, 80, 170, 0.13) 9px 12px,
+      transparent 13px 24px
     );
-  color: #603579;
 }
+
+/* NAVIGATION */
 
 .top-bar {
-  background: #f3e5f8;
-  border-bottom: 2px solid #a985bc;
-  padding: 12px 28px;
+  height: 72px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 15px;
+  gap: 22px;
+  padding: 0 24px;
+  background: #f6e5f6;
+  border-bottom: 2px solid #9656a9;
 }
 
-.top-bar h1 {
+.window-dots {
+  display: flex;
+  gap: 7px;
+}
+
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid #83557e;
+}
+
+.red { background: #f17b98; }
+.yellow { background: #ffd16d; }
+.green { background: #9fcb8b; }
+
+.brand {
   margin: 0;
-  font-size: 28px;
+  font-size: clamp(23px, 2.5vw, 32px);
   font-style: italic;
+  white-space: nowrap;
 }
 
 .nav-links {
+  flex: 1;
   display: flex;
+  justify-content: center;
   gap: 12px;
 }
 
 .nav-links button {
+  padding: 8px 17px;
   background: transparent;
   border: none;
-  padding: 10px 14px;
-  color: #603579;
-  cursor: pointer;
   border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
+.nav-links button.selected,
 .nav-links button:hover {
-  background: #d7b6e8;
+  background: #b68bd2;
+  color: white;
 }
 
 .nav-profile {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   object-fit: cover;
 }
 
+/* MAIN SCENE */
+
 .retro-home {
-  min-height: 650px;
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  padding: 50px 20px;
-}
-
-.portrait-area {
-  width: 34%;
-  align-self: flex-end;
-  z-index: 2;
-}
-
-.hero-portrait {
   width: 100%;
-  border: 7px solid white;
-  border-radius: 28px;
-  box-shadow: 10px 10px 0 #b58acb;
-  transform: rotate(-3deg);
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.retro-computer-area {
-  width: 52%;
+.retro-scene {
+  position: relative;
+  width: min(100%, 1024px);
+  aspect-ratio: 1024 / 640;
+  margin: 0 auto;
+}
+
+/* COMPUTER */
+
+.computer-wrapper {
+  position: absolute;
+  left: 29%;
+  top: 2%;
+  width: 64%;
+  z-index: 1;
+}
+
+.computer-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* CLICKABLE SCREEN */
+
+.interactive-screen {
+  position: absolute;
+  left: 17%;
+  top: 17%;
+  width: 58%;
+  height: 47%;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  color: #512365;
 }
 
-.computer {
+.interactive-screen h2 {
+  font-size: clamp(15px, 3vw, 38px);
+  font-style: italic;
+  line-height: 1.05;
+  margin: 0 0 8px;
+  white-space: nowrap;
+}
+
+.interactive-screen p {
+  font-size: clamp(11px, 1.7vw, 19px);
+  font-style: italic;
+  line-height: 1.2;
+  margin: 0 0 18px;
+}
+
+.screen-buttons {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.screen-buttons button {
   width: 100%;
-  max-width: 500px;
-  padding: 30px 30px 18px;
-  background: linear-gradient(
-    135deg,
-    #f7f0f5,
-    #c6b6cb
-  );
-  border: 7px solid #ad9ab7;
-  border-radius: 48px 48px 32px 32px;
-  box-shadow:
-    15px 18px 0 #8e769c,
-    inset 4px 4px 8px white;
-}
-
-.computer-screen {
-  min-height: 350px;
-  background: linear-gradient(
-    135deg,
-    #e8d5f1,
-    #f9efff
-  );
-  border: 12px solid #887394;
-  border-radius: 38px;
-  box-shadow:
-    inset 0 0 22px #bba3c9,
-    3px 3px 6px #8c7899;
+  min-height: 40px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
+  gap: 12px;
 
-.screen-content {
-  width: 100%;
-  text-align: center;
-}
-
-.screen-content h2 {
-  font-size: 37px;
-  font-style: italic;
-  margin: 0 0 10px;
-}
-
-.screen-content p {
-  font-size: 18px;
-  line-height: 1.4;
-  margin-bottom: 22px;
-}
-
-.screen-content button {
-  display: block;
-  width: 90%;
-  margin: 10px auto;
-  padding: 12px;
-  border: 2px solid #a57cb7;
-  border-radius: 12px;
+  padding: 7px 15px;
   background: linear-gradient(
-    #f8eaff,
-    #d5b2e8
+    #fff2ff,
+    #d7b0e8
   );
-  color: #603579;
-  font-size: 16px;
+
+  border: 2px solid #9e60b5;
+  border-radius: 11px;
+  box-shadow: 2px 3px 0 #9365a5;
+
+  color: #2d1639;
+  font-size: clamp(11px, 1.4vw, 17px);
   cursor: pointer;
-  box-shadow: 2px 3px 0 #ac89bd;
 }
 
-.screen-content button:hover {
-  background: #cda0e6;
+.screen-buttons button span {
+  width: 25px;
+  font-size: 20px;
+}
+
+.screen-buttons button:hover {
+  background: #cda2e5;
   transform: translateY(-2px);
 }
 
-.computer-logo {
-  text-align: center;
-  margin-top: 14px;
-  font-size: 13px;
-}
+/* PORTRAIT */
 
-.computer-stand {
-  width: 110px;
-  height: 65px;
-  background: #c6b6cb;
-  border: 5px solid #ad9ab7;
-}
-
-.computer-base {
-  width: 290px;
-  height: 26px;
-  background: #c6b6cb;
-  border: 5px solid #ad9ab7;
-  border-radius: 14px;
-}
-
-.sticky-note {
+.hero-portrait {
   position: absolute;
-  right: 20px;
-  bottom: 80px;
-  padding: 18px;
-  background: #fff0bb;
-  color: #744b49;
-  box-shadow: 5px 7px 0 #bda3a4;
-  transform: rotate(5deg);
+  left: 0;
+  bottom: 0;
+  width: 43%;
+  height: auto;
+  max-height: 96%;
+  object-fit: contain;
+  object-position: bottom;
   z-index: 3;
 }
 
-.sticky-note p {
-  margin: 7px 0;
-}
+/* OTHER PAGES */
 
 .page-area {
-  min-height: 70vh;
-  padding: 30px 20px;
+  min-height: 75vh;
+  padding: 30px;
   text-align: center;
 }
 
 .back-button {
   padding: 12px 24px;
+  border: none;
   border-radius: 12px;
   background: #b68bd1;
   color: white;
-  border: none;
   cursor: pointer;
 }
 
-footer {
-  text-align: center;
-  padding: 20px;
+.coming-soon {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 30px;
+  background: #f9edff;
+  border-radius: 20px;
 }
 
-@media (max-width: 800px) {
-  .retro-home {
-    flex-direction: column;
-    gap: 30px;
-  }
+/* SMALL SCREENS */
 
-  .portrait-area {
-    width: 60%;
-    align-self: center;
-  }
-
-  .retro-computer-area {
-    width: 100%;
-  }
-
-  .sticky-note {
-    position: static;
-    transform: rotate(2deg);
-  }
-
+@media (max-width: 700px) {
   .top-bar {
+    height: auto;
+    min-height: 72px;
     flex-wrap: wrap;
     justify-content: center;
+    padding: 10px;
+    gap: 10px;
   }
 
   .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
+    order: 3;
+    flex-basis: 100%;
+    gap: 3px;
+  }
+
+  .nav-links button {
+    padding: 6px 9px;
+    font-size: 13px;
+  }
+
+  .computer-wrapper {
+    left: 28%;
+    width: 72%;
+  }
+
+  .hero-portrait {
+    width: 47%;
+  }
+
+  .interactive-screen h2 {
+    font-size: clamp(10px, 3vw, 19px);
+    margin-bottom: 3px;
+  }
+
+  .interactive-screen p {
+    font-size: clamp(7px, 1.6vw, 12px);
+    margin-bottom: 5px;
+  }
+
+  .screen-buttons {
+    gap: 3px;
+  }
+
+  .screen-buttons button {
+    min-height: 0;
+    padding: 3px 5px;
+    font-size: clamp(7px, 1.5vw, 11px);
+    gap: 3px;
+    border-width: 1px;
+    border-radius: 5px;
+  }
+
+  .screen-buttons button span {
+    width: 12px;
+    font-size: 11px;
   }
 }
